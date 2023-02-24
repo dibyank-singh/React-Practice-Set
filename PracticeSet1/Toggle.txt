@@ -1,0 +1,24 @@
+
+
+Implement Toggle Element in React Js.
+
+import "./styles.css";
+import React, { useState } from "react";
+
+export default function App() {
+  const [state, setState] = useState(false);
+  const handleclick = () => {
+    setState(!state);
+  };
+  return (
+    <div className="App">
+      <h1>Hello React</h1>
+
+      <button onClick={() => handleclick()}>
+        {" "}
+        {state ? "Hide Element Below" : "Show Element Below"}{" "}
+      </button>
+      {state && <div> This is Toggle Element </div>}
+    </div>
+  );
+}

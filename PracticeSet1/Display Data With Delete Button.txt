@@ -1,0 +1,46 @@
+import "./styles.css";
+import React, { useState } from "react";
+const usersdata = [
+  {
+    id: 1,
+    name: "Divyank",
+    Prof: "Eng",
+    location: "Delhi"
+  },
+  {
+    id: 2,
+    name: "Divyanshu",
+    Prof: "Army",
+    location: "Dehradun"
+  },
+  {
+    id: 3,
+    name: "Ankit",
+    Prof: "Doctor",
+    location: "Delhi"
+  }
+];
+
+export default function App() {
+  const [data, setData] = useState(usersdata);
+  const handleclick = (id) => {
+    const resultdata = data.filter((elmdata) => elmdata.id !== id);
+    setData(resultdata);
+  };
+
+  return (
+    <>
+      <h3> Users details </h3>
+      {data.map((elm) => (
+        <li>
+          <ul>
+            {elm.name} {elm.id}{" "}
+            <button onClick={() => handleclick(elm.id)}> Delete </button>{" "}
+          </ul>
+          <ul>{elm.Prof} </ul>
+          <ul>{elm.location} </ul>
+        </li>  
+      ))}
+    </>
+  );
+}
