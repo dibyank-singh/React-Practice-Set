@@ -1,0 +1,44 @@
+    Update Parent State From Child (Solution)******
+
+1st Step--
+
+import "./styles.css";
+import Parent from "./Parent";
+
+export default function App() {
+  return (
+    <div className="App">
+      <h1>Update Parent State Challenge (Using Callback)</h1>
+      <Parent />
+    </div>
+  );
+}
+
+2nd Step--
+
+import React, { useState } from "react";
+import Child from "./Child";
+export default function Parent() {
+  const [data, setData] = useState("I need to change by child component...");
+   console.log(data)
+  return (
+    <>
+      <h3> Hello, I'm Parent Component</h3>
+
+      <h6>{data} </h6>
+
+      <Child setData={setData} />
+    </>
+  );
+}
+
+3rd Step--
+
+export default function Child({ setData }) {
+  return (
+    <>
+      <h3> Hello, I'm form Child component </h3>
+      <button onClick={setData("This value is chnaged by child Component")}> Change Parent Value </button>
+    </>
+  );
+}

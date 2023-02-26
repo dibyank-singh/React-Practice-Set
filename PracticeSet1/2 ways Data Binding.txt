@@ -1,0 +1,25 @@
+
+
+   2Ways Data Binding....
+
+import "./styles.css";
+import React, { useState } from "react";
+
+export default function App() {
+  const [data, setData] = useState();
+  const handlechange = (e) => {
+    setData(e.target.value);
+  };
+  return (
+    <div className="App">
+      <h1>Data Binding In React Js </h1>
+      <input
+        value={data}
+        type="text"
+        placeholder="Write someting...."
+        onChange={(e) => handlechange(e)}
+      />
+      <h2> {data} </h2>
+    </div>
+  );
+}

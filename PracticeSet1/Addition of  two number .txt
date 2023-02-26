@@ -1,0 +1,39 @@
+Set 6--
+
+    Addition of two numbers---
+
+
+import React from "react";
+import "./styles.css";
+
+export default function App() {
+  const [firstnum, setFirstnum] = React.useState();
+  const [scndnum, setScndnum] = React.useState();
+  const [finalres, setFinalres]=React.useState(0)
+const Additioncal=()=>{
+let result=firstnum+scndnum
+setFinalres(result)
+}
+  
+  return (
+    <div className="App">
+      <h1>Addition Of Two Numbers </h1>
+      <input
+        type="number"
+        placeholder="Enter the 1st Num.."
+        onChange={(e) => setFirstnum(+e.target.value)}
+      />
+      <br />
+      <br />
+      <input
+        type="number"
+        placeholder="Enter the 2nd Num.."
+        onChange={(e) => setScndnum(+e.target.value)}
+      />
+      <br />
+      <br />
+      <button onClick={()=> Additioncal()}> Add Now </button>
+      <h3> Total= {finalres ? finalres :"Click Add now to get total"} </h3>
+    </div>
+  );
+}
