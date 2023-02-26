@@ -1,0 +1,30 @@
+
+   Fetch Data from Api....
+
+
+import React, { useEffect, useState } from "react";
+import "./styles.css";
+
+export default function App() {
+  const [data, setData] = useState();
+  console.log(data.title);
+  const url = "https://jsonplaceholder.typicode.com/posts/1";
+
+  const getdata = async () => {
+    const resp = await fetch(url);
+    const result = await resp.json();
+    setData(result);
+  };
+
+  useEffect(() => {
+    getdata();
+  }, []);
+
+  return (
+    <>
+      <h2>Fetch data from Api.. </h2>
+      <h4> Title: {data.title} </h4>
+      <h4> Body: {data.body} </h4>
+    </>
+  );
+}

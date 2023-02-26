@@ -1,0 +1,22 @@
+
+   Increment Decrement Counter----
+
+
+import React from "react";
+import "./styles.css";
+
+export default function App() {
+  const [value, setValue] = React.useState(0);
+
+  return (
+    <div className="App">
+      <h1>Counter App (Solution)</h1>
+
+      <h2> Counter:{value} </h2>
+      <button onClick={() => setValue(value + 1)}>Increment </button>
+      <button onClick={() => setValue(value <= 0 ? 0 : value - 1)}>
+        Decrement{" "}
+      </button>
+    </div>
+  );
+}
