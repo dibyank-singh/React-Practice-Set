@@ -1,0 +1,74 @@
+
+3. Use case of useContext hook with example.
+
+   useContext()=
+   React Context is a way to manage state globally.
+   It can beused together with the useState Hook to share state between deeply 
+   nested components more easily than with useState alone.
+  
+  *The Problem
+State should be held by the highest parent component in the stack that requires access to the state.
+
+To illustrate, we have many nested components. The component at the top and bottom of the stack need access to the state.
+
+To do this without Context, we will need to pass the state as "props" through each nested component. This is called "prop drilling".
+
+
+
+Example- 
+
+// use of useContext()
+
+import React, { useState, useContext, createContext } from "react";
+
+const UserContext = createContext();
+
+export default function App() {
+  const [user, setUser] = useState("Divyank");
+
+  return (
+    <UserContext.Provider value={user}>
+      <h2>UseCase of useContext hook </h2>
+      <h1>{`Hello ${user}`}</h1>
+      <ChildB />
+    </UserContext.Provider>
+  );
+}
+
+function ChildB() {
+  return (
+    <div>
+      <h4>This is Child-B</h4>
+      <ChildC />
+    </div>
+  );
+}
+function ChildC() {
+  return (
+    <div>
+      <h4>This is Child-C</h4>
+      <ChildD />
+    </div>
+  );
+}
+
+function ChildD() {
+  const user = useContext(UserContext);
+  return (
+    <div>
+      <h4>This is Child-D</h4>
+      <h2> Hello {user} Again</h2>
+    </div>
+  );
+}
+
+
+Output- 
+
+UseCase of useContext hook
+Hello Divyank
+This is Child-B
+This is Child-C
+This is Child-D
+Hello Divyank Again
+ 
