@@ -1,0 +1,25 @@
+
+1. Use Case of useState hook with Example.
+
+  useState()= useState
+  The useState hook is used for creating and updating state variables in functional components.
+  It takes an initial state value as a parameter and returns an array with two elements:
+  the current state and a function to update the state.
+
+
+Example- 
+
+// Use Of UseState Hooks()
+import React from "react"
+import "./styles.css";
+
+export default function App() {
+  const[state, setState]=React.useState(1)
+  return (
+    <div className="App">
+      <h1>Use Of useState()</h1>
+      <p>Counter {state} </p>
+      <button onClick={()=> setState(state+1)}> Click to increase </button>
+    </div>
+  );
+}
