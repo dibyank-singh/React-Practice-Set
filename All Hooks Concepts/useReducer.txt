@@ -1,0 +1,38 @@
+ 4. UseCase of useReducer() with example.
+
+    useReducer= useReducer
+    The useReducer hook is used for managing complex state logic in functional components.
+    It takes a reducer function and an initial state value as parameters and returns an array with two elements: 
+    the current state and a dispatch function to update the state.
+
+  
+Example-
+
+// use of useContext()
+
+import React, { useReducer } from "react";
+
+const initialState = { count: 0 };
+
+function reducer(state, action) {
+  switch (action.type) {
+    case "increment":
+      return { count: state.count + 1 };
+    case "decrement":
+      return { count: state.count - 1 };
+    default:
+      throw new Error();
+  }
+}
+
+export default function App() {
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  return (
+    <div>
+      <p>Count: {state.count}</p>
+      <button onClick={() => dispatch({ type: "increment" })}>Increment</button>
+      <button onClick={() => dispatch({ type: "decrement" })}>Decrement</button>
+    </div>
+  );
+}
