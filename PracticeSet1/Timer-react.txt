@@ -1,0 +1,49 @@
+*  Timer Using React Js  --- Practice Set
+
+import React, { useState, useRef } from 'react';
+
+function Timer() {
+  const [isRunning, setIsRunning] = useState(false);
+  const [time, setTime] = useState(0);
+  const intervalRef = useRef(null);
+
+  const handleStartClick = () => {
+    if (!isRunning) {
+      setIsRunning(true);
+      intervalRef.current = setInterval(() => {
+        setTime((prevTime) => prevTime + 1);
+      }, 1000);
+    }
+  };
+
+  const handleStopClick = () => {
+    if (isRunning) {
+      setIsRunning(false);
+      clearInterval(intervalRef.current);
+    }
+  };
+
+  return (
+    <div>
+      <h1>{time} seconds</h1>
+      <button disabled={isRunning} onClick={handleStartClick}>
+        Start
+      </button>
+      <button disabled={!isRunning} onClick={handleStopClick}>
+        Stop
+      </button>
+    </div>
+  );
+}
+
+export default Timer;
+
+
+Explanation:
+
+We first import React, useState, and useRef from the React library.
+We then define the Timer function component.
+Inside the Timer component, we use the useState hook to define a isRunning state variable with an initial value of false, a time state variable with an initial value of 0, and a intervalRef ref variable with an initial value of null.
+We define the handleStartClick function that will be called when the user clicks the "Start" button. This function starts the timer by setting the isRunning state variable to true and calling setInterval to increment the time state variable every second. We also store the interval ID in the intervalRef ref variable so that we can stop the interval later.
+We define the handleStopClick function that will be called when the user clicks the "Stop" button. This function stops the timer by setting the isRunning state variable to false and calling clearInterval with the interval ID stored in the intervalRef ref variable.
+In the return statement, we render a heading that displays the current time state variable, and two buttons that allow users to start and stop the timer. We set the disabled attribute of the buttons to prevent users from clicking the "Start" button while the timer is running, and from clicking the "Stop" button while the timer is stopped.
