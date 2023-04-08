@@ -1,0 +1,42 @@
+
+*Color Picker Using React Js- Practice Set
+
+
+import React, { useState } from "react";
+
+const App = () => {
+  const [color, setColor] = useState("");
+  const handlechange = (e) => {
+    setColor(e.target.value);
+  };
+  console.log(color);
+  return (
+    <>
+      <h2>Color Picker Using React Js..... </h2>
+
+      {/* Drop Down Concept */}
+      <div className="Select-Box">
+        <select value={color} onChange={handlechange}>
+          <option value="">Select The Color...</option>
+          <option value="red">Red</option>
+          <option value="green">Green</option>
+          <option value="blue">Blue</option>
+          <option value="gray">Gray</option>
+          <option value="orange">Orange</option>
+        </select>
+      </div>
+      <div
+        style={{ backgroundColor: color, width: "100px", height: "100px" }}
+      ></div>
+    </>
+  );
+};
+export default App;
+
+Explanation:
+
+We first import React and useState from the React library.
+We then define the ColorPicker function component.
+Inside the ColorPicker component, we use the useState hook to define a color state variable with an initial value of an empty string.
+We define the handleColorChange function that will be called when the user selects a new color from the dropdown menu. This function updates the color state variable with the selected color value using the setColor function.
+In the return statement, we render a heading, a dropdown menu that allows users to select a color, and a preview div that displays the selected color. We set the value of the dropdown menu to the color state variable and pass the handleColorChange function to the onChange event of the dropdown menu to handle user input. We also set the backgroundColor style of the preview div to the color state variable to display the selected color.
